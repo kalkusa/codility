@@ -1,18 +1,22 @@
 let solution = arg => {
-  while (true) {
-    if (arg.length === 1) {
-      return arg[0]
-    }
-
-    let numberToPair = arg[0]
-    for (let i = 1; i < arg.length; i++) {
-      if (numberToPair === arg[i]) {
-        arg.splice(i, 1)
-        arg.splice(0, 1)
-        break
-      }
+  let occurrencesDictionary = []
+  for (let i = 0; i < arg.length; i++) {
+    if (occurrencesDictionary[arg[i]]) {
+      occurrencesDictionary[arg[i]]++
+    } else {
+      occurrencesDictionary[arg[i]] = 1
     }
   }
+
+  let result = 0
+  occurrencesDictionary.forEach((value, key) => {
+    if (value % 2 == 1) {
+      result = key
+      return
+    }
+  })
+
+  return result
 }
 
 module.exports = solution

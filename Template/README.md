@@ -1,0 +1,1 @@
+Template for simple node.js code with unit tests

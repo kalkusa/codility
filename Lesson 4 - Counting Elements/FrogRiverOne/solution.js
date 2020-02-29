@@ -1,8 +1,13 @@
 let solution = (X, A) => {
   let path = [...Array(X + 1).keys()].map(n => false)
+  path[0] = true
+  let missingLeaves = X
   for (let i = 0; i < A.length; i++) {
-    path[A[i]] = true
-    if (path.slice(1, X + 1).every(x => x === true)) {
+    if (path[A[i]] === false) {
+      path[A[i]] = true
+      missingLeaves--
+    }
+    if (missingLeaves === 0) {
       return i
     }
   }

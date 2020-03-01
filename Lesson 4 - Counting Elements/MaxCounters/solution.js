@@ -4,13 +4,18 @@ let solution = (N, A) => {
   for (let i = 0; i < A.length; i++) {
     let valueOfIncrease = A[i] - 1
     if (valueOfIncrease + 1 > N) {
-      counters.fill(maxCounter)
+      //counters.fill(maxCounter)
+      for (let j = 0; j < counters.length; j++) {
+        counters[j] = maxCounter
+      }
       continue
     }
 
     let newCounterValue = counters[valueOfIncrease] + 1
-    counters[valueOfIncrease]++
-    maxCounter = newCounterValue > maxCounter ? newCounterValue : maxCounter
+    counters[valueOfIncrease] = newCounterValue
+    if (newCounterValue > maxCounter) {
+      maxCounter = newCounterValue
+    }
   }
   return counters
 }
